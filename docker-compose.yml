@@ -1,0 +1,19 @@
+# docker-compose.yml
+
+version: "3.7"
+services:
+  app:
+    container_name: docker-node-mongo
+    restart: always
+    build: .
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - '8080:3000'
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27018:27017'
